@@ -1,0 +1,388 @@
+header {
+	width: 100vw;
+	height: 8vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #8BAAB5;
+	border-bottom: 0.1vw solid gray;
+}
+
+aside {
+	width: 45vw;
+	height: 92vh;
+	position: absolute;
+	top: 8vh;
+	left: 0;
+	background-color: white;
+	overflow: hidden;
+}
+
+article {
+	width: 55vw;
+	height: 88vh;
+	position: absolute;
+	top: 8vh;
+	left: 45vw;	
+	background-color: white;
+	border-left: 0.1vw solid #8BAAB5;		
+}
+
+footer {
+	width: 55vw;
+	height: 4vh;
+	position: absolute;
+	top: 96vh;
+	left: 45vw;	
+	background-color: white;
+	border-top: 0.1vw solid gray;
+	color: #8BAAB5;
+}
+
+p {
+	font-size: 2.5vh;
+}
+
+.logo-rect1 {
+    -ms-transform: rotate(330deg); /* IE 9 */
+    -webkit-transform: rotate(330deg); /* Safari */
+    transform: rotate(330deg);
+    z-index: 10;
+    background-color: orange;
+    position: absolute;
+    top: -5vh;
+    left: -1vw;
+    width: 5vw;
+    height: 12vw;
+    border: 1px solid #8BAAB5;
+}
+
+.logo-rect2 {
+    -ms-transform: rotate(330deg); /* IE 9 */
+    -webkit-transform: rotate(330deg); /* Safari */
+    transform: rotate(330deg);
+    z-index: 11;
+    background-color: white;
+    position: absolute;
+    top: -5vh;
+    left: 1vw;
+    width: 5vw;
+    height: 12vw;
+    border: 1px solid #8BAAB5;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+  	overflow: hidden;
+  }
+
+h1, .all-meeting-title, .appoint-btn, .cright, .toptext {
+	font-family: 'Raleway', sans-serif;
+}
+
+#m1, #m2, #u {
+	font-family: 'Poiret One', cursive;
+}
+
+label {
+	margin: 5px;
+	width: 100%;
+}
+
+.logo {
+    width: 5vw;
+    word-wrap: break-word;
+}
+
+#m1 {
+  	margin: 2vw 0 0 0.6vw;
+  	font-size: 4vw;
+}
+
+#m2 {
+  	margin: -4vw 0 0 0.6vw;
+  	font-size: 4vw;
+}
+
+#u {
+  	margin: -4.8vw 0 0 0.65vw;
+  	font-size: 5vw;
+}
+
+.row {
+  	margin: 0;
+}
+
+.navbar {
+	margin: 0;
+	border: 0;
+	float: right;
+	padding-left: 0;
+}
+
+.nav-ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+.nav-li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 3vh 2vw 3vh 2vw;
+    text-decoration: none;
+    text-shadow: 1px 1px gray;
+}
+
+li a:hover {
+    background-color: white;
+    text-decoration: none;
+    text-shadow: none;
+    color: #8BAAB5;
+}
+
+li a:active {
+	color:orange;
+}
+
+a, a:active, a:focus, a:hover, a:visited {
+    text-decoration: none;  
+}
+
+.inform {
+	border-left: 1px solid #8BAAB5;
+	border-right: 1px solid #8BAAB5;
+	border-top: 1px solid #8BAAB5;
+	margin: 1vh 1vw 0 1vw;
+	padding-top: 4vh;
+}
+
+.inform2 {
+	border: 1px solid #8BAAB5;
+	margin: 1vh 1vw 1vh 1vw;
+	padding-top: 1.5vh;
+}
+
+.inform2 div p {
+	padding-top: 2.5vh;
+}
+
+.img-inform {
+	border-left: 1px solid #8BAAB5;
+	border-right: 1px solid #8BAAB5;
+	border-bottom: 1px solid #8BAAB5;
+	margin: 0 1vw 1vh 1vw;
+	padding: 2vh 0 2vh 0;
+}
+
+.appoint-btn {
+	border: 3px solid #8BAAB5;
+	color: white;
+	background-color: orange;
+	font-size: 3.5vh;
+}
+
+.appoint-btn:hover {
+	color: #8BAAB5;
+}
+
+.meeting-title-div {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	width: 36vw;
+	right: 0;
+	padding: 0;
+	z-index: 5;
+}
+
+.divToLogin {
+	position: absolute;
+	margin: auto;
+	top: 20vh;
+	width: 35vw;
+	right: 10vw;
+	height: 40vh;
+	padding: 8vh;
+	z-index: 7;
+	opacity: 0.9;
+	background-color: white;
+	border: 1px solid #8BAAB5;
+}
+
+.divToLogin p {
+	font-size: 3.5vh;
+}
+
+.all-meeting-link {
+	margin: 1.5vh 2vw 0.5vh 1vw;
+}
+
+.toptext {
+	margin: -1vh 0;
+}
+
+.name, .name a {
+	margin: 0;
+	padding-top: 0;
+	font-size: 7vh;
+	z-index: 20;
+	color: white;
+}
+
+.cright {
+	margin: 0 1vw 0 0;
+	color: #8BAAB5;;
+	font-size: 2.5vh;
+	float: right;
+}
+
+.pict {
+	max-height: 60vh;
+	border: 1px solid #8BAAB5;
+	padding: 1px;
+}
+
+.location-select {
+	display: none;
+	padding: 2vh 0 2vh 0;
+	background-color: white;
+	border-radius: 0.5vw;
+	border: 1px solid #8BAAB5;
+}
+
+.auth-only {
+	display: none;
+}
+
+.login_register1, .login_register2 {
+	width: 20vw;
+}
+
+.login_register2 {
+	display: none;
+}
+
+.login_register1 input[type=text], .login_register1 input[type=email], .login_register1 input[type=password], .login_register2 input[type=text], .login_register2 input[type=email], .login_register2 input[type=password] {
+	padding: 5px; 
+	margin: -5px 0 10px 0; 
+	float: right;
+}
+
+.login_popup {
+	padding: 1vh 1vw 2vh 1vw; 
+	background: white; 
+	border: 1px solid #8BAAB5;
+	border-radius: 0.5vw;
+	z-index: 99; 
+	display: none; 
+	position: absolute; 
+	right: 0;
+	top: 8vh;
+}
+
+.close_button { 
+	float: left; 
+}
+
+.login_button, .register_button { 
+	float: right; 
+}
+
+.popup_title { 
+	margin: 20px;
+}
+
+.login_label, .register_label {
+	margin: 10px;
+}
+
+.login_link, .register_link {
+	text-align: center;
+}
+
+.logout_call {
+	display: none;
+}
+
+.radio-label {
+	display: inline-block;
+	width: 45%;
+}
+
+.row-form {
+	margin: 2vh 0 1vh 0;
+}
+
+.labelTime {
+	margin: 5px 0 5px 0;
+}
+
+ .aside-page {
+ 	height: 92vh;
+}
+
+.left-padding-zero {
+	padding-left: 0;
+}
+
+.right-padding-zero {
+	padding-right: 0;
+}
+
+.list-of-meetings {
+	height: 70vh;
+	overflow: auto;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	padding-right: 1vw;
+}
+
+.list-of-public-meetings h3, .list-of-private-meetings h3 {
+	background-color: #EEEEEE;
+	padding: 1vw;
+}
+
+.list-of-public-meetings h4, .list-of-private-meetings h4 {
+	background-color: #FAFAFA;
+	padding: 1vw;
+	margin-top: 0;
+}
+
+.scrollablediv {
+	overflow-y: auto;
+}
+
+.meetingTypeOk, .meetingHostedOk, .meetingInvitedOk, .meetingTopicOk, .meetingPlaceOk, .meetingDateOk, .meetingTimeOk {
+	display: none;
+	color: green;
+}
+
+.meetingTypeFeedback, .meetingHostedFeedback, .meetingInvitedFeedback, .meetingTopicFeedback, .meetingPlaceFeedback, .meetingDateFeedback, .meetingTimeFeedback, .txtEmailFeedback, .txtPassFeedback, .txtRegNameFeedback, .txtRegEmailFeedback, .txtRegPassFeedback, .txtRegRePassFeedback {
+	color: red;
+	font-size: 2vh;
+}
+
+#invited-friends {
+	display: none;
+}
+
+.meeting-box {
+	border: 0.1vw solid #CBEAF5;
+}
+
+.meeting-box p {
+	padding-left: 1vw;
+}
+
+.mob-menu {
+	display: none;
+}
+
+.mobile-menu-div {
+	display: none
+}

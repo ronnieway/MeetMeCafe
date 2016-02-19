@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+    <title>MeetMeCafe - easy way to have the meeting at the local cafe, restaurant, or other venue </title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/project_css/site.css" rel="stylesheet">
+    <link href="css/project_css/media.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <header>
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+          <div class="logo-rect1">
+          </div>
+          <div class="logo-rect2">
+            <div class="logo">
+              <p id="m1">M</p>
+              <p id="m2">M</p>
+              <p id="u">C</p>
+            </div>
+          </div>              
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 left-padding-zero">
+          <h1 class="text-left name"><a href="#">MeetMeCafe</a></h1>
+        </div> 
+        <div class="col-lg-7 col-md-7 col-sm-2 col-xs-2">
+          <nav>
+            <ul class="navbar nav-ul">
+              <li class="nav-li auth-only mymeetings-menu"><h4 class="toptext"><a href="#">Meetings</a></h4></li>
+              <li class="nav-li auth-only addmeeting-menu"><h4 class="toptext"><a href="#">Add new</a></h4></li>
+              <li class="nav-li howitworks-menu"><h4 class="toptext"><a href="#">How to</a></h4></li>
+              <li class="nav-li about-menu"><h4 class="toptext"><a href="#">About</a></h4></li>
+              <li class="nav-li login_call"><h4 class="toptext"><a href="#/">Sign In / Sign Up</a></h4></li>
+              <li class="nav-li logout_call"><h4 class="toptext"><a href="#/logout">Sign Out</a></h4></li>
+            </ul>
+            <button type="button" class="btn btn-default mob-menu" aria-label="Mobile Menu">
+              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="mobile-menu-div list-group">              
+                <button type="button" class="mnav-li list-group-item auth-only mymeetings-menu"><h4 class="mtoptext"><a href="#">Meetings</a></h4></button>
+                <button type="button" class="mnav-li list-group-item auth-only addmeeting-menu"><h4 class="mtoptext"><a href="#">Add new</a></h4></button>
+                <button type="button" class="mnav-li list-group-item howitworks-menu"><h4 class="mtoptext"><a href="#">How to</a></h4></button>
+                <button type="button" class="mnav-li list-group-item about-menu"><h4 class="mtoptext"><a href="#">About</a></h4></button>
+                <button type="button" class="mnav-li list-group-item login_call"><h4 class="mtoptext"><a href="#/">Sign In / Sign Up</a></h4></button>
+                <button type="button" class="mnav-li list-group-item logout_call"><h4 class="mtoptext"><a href="#/logout">Sign Out</a></h4></button>              
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="login_popup">
+        <div>
+          <form class="login_register1" id="frmLogin" role="form">
+            <h4 class="text-center">Sign In</h4>
+            <div class="form-group">
+              <label for="txtEmail">Email: </label>
+              <input type="email" class="form-control" id="txtEmail" placeholder="your@email.com" name="email" required onblur="txtEmailCheck();" onfocus="$('.txtEmailFeedback').empty();">
+              <div class="txtEmailFeedback">
+              </div>        
+              <label for="txtPass">Password: </label>
+              <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" required onblur="txtPassCheck();" onfocus="$('.txtPassFeedback').empty();">
+              <div class="txtPassFeedback">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5 left-padding-zero">
+                <button class="btn btn-default btn-block close_button close_overlay">Cancel</button>
+              </div>
+              <div class="col-sm-2 col-xs-2 hidden-md hidden-lg">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5 right-padding-zero">
+                <button type="submit" class="btn btn-primary btn-block login_button">Sign In</button>
+              </div>
+            </div>
+            <br>
+            <div>Don't have account? <a class="register_link" href="#/register">Sign Up</a></div>
+          </form>
+        </div>
+        <div class="scrollablediv">
+          <form class="login_register2" id="frmRegister" role="form">
+            <h4 class="text-center">Sign Up</h4>
+            <div class="form-group">
+              <label for="txtRegName">Name: </label>
+              <input type="text" class="form-control" id="txtRegName" placeholder="Your Name" name="name" required onblur="txtRegNameCheck();" onfocus="$('.txtRegNameFeedback').empty();">
+              <div class="txtRegNameFeedback">
+              </div>             
+              <label for="txtRegEmail">Email: </label>
+              <input type="email" class="form-control" id="txtRegEmail" placeholder="your@email.com" name="email" required onblur="txtRegEmailCheck();" onfocus="$('.txtRegEmailFeedback').empty();">
+              <div class="txtRegEmailFeedback">
+              </div>
+              <label for="txtRegPass">Password: </label>
+              <input type="password" class="form-control" id="txtRegPass" placeholder="Password" name="password" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onblur="txtRegPassCheck();" onfocus="$('.txtRegPassFeedback').empty();">
+              <div class="txtRegPassFeedback">
+              </div>
+              <label for="txtRegRePass">Re-enter password: </label>
+              <input type="password" class="form-control" id="txtRegRePass" placeholder="Password" name="repassword" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onblur="txtRegRePassCheck();" onfocus="$('.txtRegRePassFeedback').empty();">
+              <div class="txtRegRePassFeedback">
+              </div>
+              <label for="txtRegLocation">Your city: </label>
+              <input type="text" class="form-control" id="txtRegLocation" placeholder="Kyiv" name="location">
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5 left-padding-zero">
+                <button class="btn btn-default btn-block close_button close_overlay">Cancel</button>
+              </div>
+              <div class="col-sm-2 col-xs-2 hidden-md hidden-lg">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5 right-padding-zero">
+                <button type="submit" class="btn btn-default btn-primary btn-block register_button" onclick="newUserRegistering();">Sign Up</button>
+              </div>
+            </div>
+            <br>
+            <div>
+              Already have account? <a class="login_link" href="#/">Sign In</a>
+            </div>
+          </form>
+        </div>  
+      </div>
+    </header>
+
+    <aside>  
+      <div class="aside-index aside-page">
+        <h2 class="text-center" id="welcome-message">Welcome</h2>
+        <div class="row inform">
+          <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">                       
+            <p>MeetMeCafe webapp helps managing meeting at your local area. You can see public meetings created for everybody, private meetings where you are invited, as well as you can create your own meetings. Try it. It's easy!</p>
+          </div>  
+        </div>
+        <div class="row img-inform">
+          <div class="col-lg-12 col-md-12 text-center img-nopadding">
+            <img src="img/cafe.jpg" class="pict">
+          </div>
+        </div>
+      </div>
+      <div class="aside-howto aside-page scrollablediv">
+        <h2 class="text-center">How to use it</h2>
+        <div class="row inform2">
+          <div class="col-lg-12 col-md-12">
+            <p>Sign in to start seeing and managing meatings nearby. If you don't have account yet - sign up, it's easy.</p>
+            <p>After signing in you will see the map with meeting points around.</p>
+            <p>If you don't see your location - try to autolocate by clicking the button at the top right corner of the map, or just drag map to your location.</p>
+            <p>You can see the whole list of today meeting at the "My meetings page". There are private meetings (where you are the author or invited person), and public meetings - for everybody.</p>
+            <p>You can create your own meeting at the "New meeting" page. Just simply provide all the required data, choose the location, select who will attend the meeting and that's all.</p>
+            <p>If you create public meeting - everyone who signs in will see it. If you create private meeting - only the friends (invited by email) will see them. Even if your friends don't sign up yet - they will see all meeting where they are invited after signing up.</p>
+          </div>
+        </div>
+      </div>
+      <div class="aside-about aside-page scrollablediv">
+        <h2 class="text-center">About the project</h2>
+        <div class="row inform2">
+          <div class="col-lg-12 col-md-12">
+            <p>MeetMeCafe web application is created as a project for Udacity Senior Web Developer Nanodegree programm.</p>
+            <p>Currently it's working project, but of course there are a lot of things that need to be improved (and I hope to do that soon).</p>
+            <p>I'm using here HTML5, CSS3, JavaScript + Jquery, Bootstrap, FiraBase and Google Maps API. Icons for the map markers are created using <a href="https://mapicons.mapsmarker.com">Maps Icons Collection</a>.</p>
+            <p>This web application is created completely by Ruslan Dorozhovets (rdesigned), using some of examples from API providers as well as idea solutions from StackOverflow.</p>
+            <p>If you have any questions or suggestions regarding this web application - please contact me at <a href="mailto:rrruslan@yahoo.com">rrruslan@yahoo.com</a></p>
+          </div>
+        </div>  
+      </div>
+      <div class="aside-meetings aside-page scrollablediv">
+        <h2 class="text-center">Meetings nearby</h2>
+        <div class="row inform2">
+          <div class="col-lg-12 col-md-12 right-padding-zero">
+            <div class="list-of-meetings">
+              <div class="list-of-private-meetings">
+                <h3>Private meetings</h3>
+              </div>
+              <br>
+              <div class="list-of-public-meetings">
+                <h3>Public meetings</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="aside-createnew aside-page scrollablediv">
+        <form class="appoint-meeting" role="form">
+          <h2 class="text-center">Add new meeting</h2>
+          <div class="row inform2">
+            <div class="col-lg-12 col-md-12">
+              <div class="form-group">
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">     
+                    <label for="meetingType">
+                      It will be a: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">  
+                    <input list="meetingTypes" class="form-control" id="meetingTypeChosen" placeholder="party?" autocomplete="off" required onblur="meetingTypeCheck();" onfocus="$('.meetingTypeFeedback').empty();"> 
+                      <datalist id="meetingTypes">
+                        <option value="business matters"></option>
+                        <option value="party"></option>
+                        <option value="birthday celebration"></option>
+                        <option value="talk"></option>
+                        <option value="public Speaking"></option>
+                        <option value="performance"></option>
+                        <option value="presentation"></option>
+                        <option value="show"></option>
+                        <option value="event"></option>
+                      </datalist>
+                      <div class="meetingTypeFeedback">
+                      </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingTypeOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form" id="hosted-by">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingHosted">
+                      Hosted by: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="text" class="form-control" id="meetingHosted" placeholder="your parents? Google?.." required onblur="meetingHostedCheck();" onfocus="$('.meetingHostedFeedback').empty();">
+                    <div class="meetingHostedFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingHostedOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>  
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label>
+                      Who is invited:
+                    </label>
+                  </div>
+                  <div class="col-lg-4 col-md-4">
+                    <label class="radio-label radio-inline" for="publicRadio">
+                      <input type="radio" name="auditory" id="meetingPublicRadio" checked>
+                      Everybody
+                    </label>
+                  </div>
+                  <div class="col-lg-4 col-md-4">
+                    <label class="radio-label radio-inline" for="privateRadio">
+                      <input type="radio" name="auditory" id="meetingPrivateRadio" >
+                      Friends
+                    </label>
+                  </div>
+                  <div class="col-lg-1">
+                  </div>
+                </div>
+                <div class="row row-form" id="invited-friends">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingInvited">
+                      Friend emails: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="email" class="form-control" id="meetingInvited" placeholder="friend1@email.com, friend2@email.com" multiple onblur="meetingInvitedCheck();" onfocus="$('.meetingInvitedFeedback').empty();"> 
+                    <div class="meetingInvitedFeedback">
+                    </div>                
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingInvitedOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>  
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingTopic">
+                      The topic: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="text" class="form-control" id="meetingTopic" placeholder="drinking wine, feeling fine..." required onblur="meetingTopicCheck();" onfocus="$('.meetingTopicFeedback').empty();">
+                    <div class="meetingTopicFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingTopicOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingPlace">
+                      And location: *
+                    </label> 
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="text" class="form-control"  id="meetingPlace" placeholder="McDonalds?" required onblur="meetingPlaceCheck();" onfocus="$('.meetingPlaceFeedback').empty();">
+                    <div class="meetingPlaceFeedback">
+                    </div>                      
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingPlaceOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingDate">
+                      The date: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="date" class="form-control" id="meetingDate" required onblur="meetingDateCheck();" onfocus="$('.meetingDateFeedback').empty();">
+                    <div class="meetingDateFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 meetingDateOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label>
+                      And time: *
+                    </label>
+                  </div>
+                  <div class="col-lg-4 col-md-4 right-padding-zero">
+                    <input type="time" name="time" class="form-control" id="meetingStart" required>
+                    <div id="meetingTimeFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 right-padding-zero">
+                    <input type="time" name="time" class="form-control" id="meetingFinish" required onblur="meetingTimeCheck();" onfocus="$('.meetingTimeFeedback').empty();">
+                  </div>
+                  <div class="col-lg-1 meetingTimeOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingDescription">
+                      More info: 
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <textarea class="form-control" id="meetingDescription" rows="2" placeholder="party from down till dusk"></textarea>                   
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-7 col-md-7">
+                  </div>
+                  <div class="col-lg-4 col-md-4 text-right right-padding-zero">
+                    <button type="submit" class="btn btn-primary btn-default appointButton" onclick="newMeetingAdd();">Create meeting</button>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </aside>
+
+    <article>
+      <div class="meeting-title-div text-right">
+        <button type="link" class="btn btn-default all-meeting-link" href="#" onclick="getLocation();">Autolocate</button>
+      </div>
+      <div class="divToLogin text-justify">
+        <p>Please, sign in/sign up to see the nearest public or private meetings (where you are invited), or to create your own meeting there.</p>
+        <button class="appoint-btn btn-block"><b>Let's go!</b></button>
+      </div>
+      <div id="map" style="width:100%;height:100%;">
+      </div>
+    </article>
+
+    <footer>
+      <div class="row">
+        <div class="col-lg-9 col-md-9">
+        </div>
+        <div class="col-lg-3 col-md-3 text-right mycopyright">
+          <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+          <span>rdesigned 2016</span>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script type="text/javascript" src="js/jquery.serialize-object.compiled.js"></script>
+    <script type="text/javascript" src="js/path.min.js"></script>
+
+    <script type="text/javascript" src="js/project_js/loginpanel.js"></script>
+    <script type="text/javascript" src="js/project_js/firebase.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAEwrqTBUvPZpCqyjLjjst85AGzpQbS5Q&libraries=places&callback=initMap"
+        async defer></script>
+
+  </body>
+</html>

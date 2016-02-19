@@ -1,0 +1,260 @@
+/* up 767 @screen-xs-max*/
+@media (max-width: 767px) {
+	header {
+		width: 100vw;
+		height: 8vh;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: #8BAAB5;
+		border-bottom: 0.1vw solid gray;
+	}
+
+	aside {
+		width: 100vw;
+		height: 50vh;
+		position: absolute;
+		top: 8vh;
+		left: 0;
+		background-color: white;
+		overflow: hidden;
+	}
+
+	article {
+		width: 100vw;
+		height: 38vh;
+		position: absolute;
+		top: 58vh;
+		left: 0;	
+		background-color: white;
+		border-left: 0.1vw solid #8BAAB5;
+		z-index:2;		
+	}
+
+	footer {
+		width: 100vw;
+		height: 4vh;
+		position: absolute;
+		top: 96vh;
+		left: 0;	
+		background-color: white;
+		border-top: 0.1vw solid gray;
+		color: #8BAAB5;
+	}
+
+	label {
+		font-size: 2.5vh;
+	}
+
+	.logo-rect1, .logo-rect2 {
+    	height: 18vh;
+    	width: 5vh;
+    }
+
+	#m1, #m2 {
+		font-size: 4vh;
+	}
+
+	#u {
+		font-size: 5vh;
+	}
+
+	.logo {
+	   padding-top: 3vh;
+	}
+
+	.aside-page {
+		height: 48vh;
+	}
+
+	.list-of-meetings {
+		height: 40vh;
+	}
+
+	.inform {
+		padding: 0;
+	}
+
+	.pict {
+	max-height: 36vh;
+	}
+
+	.divToLogin {
+		position: absolute;
+		top: 10vh;
+		width: 84vw;
+		right: 8vw;
+		height: 25vh;
+		padding: 4vh;
+	}
+
+	.divToLogin p {
+		font-size: 2vh;
+	}
+
+	.all-meeting-link {
+		right: 5vw;
+		font-size: 2vh;
+	}
+
+	#welcome-message, h4 {
+		margin: 2vh 0 0 0;
+	}
+
+	.login_register1, .login_register2 {
+		width: 100vw;
+		right: 0;
+	}
+
+	.login_popup {
+		right: 0;
+	}
+
+	.name, .name a{
+		font-size: 6vh;
+		text-align: center;
+		padding-top: 0.5vh;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	.mob-menu {
+		display: block;
+		position: absolute;
+		top: 1vh;
+		right: 2vw;
+		background-color: #8BAAB5;
+	}
+
+	.mycopyright {
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 4.5vh;
+	}
+
+	h3 {
+		font-size: 4vh;
+	}
+
+	.mobile-menu-div {
+		display: none;
+		position: absolute;
+		width: 60vw;
+		top: 8vh;
+		right: 0;
+		z-index: 8;
+		color: black;
+		background-color: white;
+		border: 1px solid #8BAAB5;
+	}
+
+	.mobile-menu-list {
+	    list-style-type: none;
+	    margin: 1vw;
+	    padding: 0;
+	    overflow: hidden;
+	}
+
+	.mnav-li a {
+	    text-decoration: none;
+	}
+
+	.login_register1, .login_register1 {
+		padding: 0 2vw 0 2vw;
+	}
+}
+/* 768 @screen-sm-min - 991 @screen-sm-max */
+@media (min-width: 768px) and (max-width: 991px) {
+	.logo-rect1, .logo-rect2 {
+    	height: 20vh;
+    	width: 5vw;
+    	padding-top: 1vh;
+    }
+
+	.pict {
+		max-width: 40vw;
+	}
+
+	.divToLogin p {
+		font-size: 3vh;
+	}
+
+	.login_register1, .login_register2 {
+		width: 30vw;
+		right: 0;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	.mob-menu {
+		display: block;
+		position: absolute;
+		top: 0.5vh;
+		right: 1vw;
+		background-color: #8BAAB5;
+	}
+
+	.mobile-menu-div {
+		display: none;
+		position: absolute;
+		width: 20vw;
+		top: 8vh;
+		right: 0;
+		z-index: 8;
+		color: black;
+		background-color: white;
+		border: 1px solid #8BAAB5;
+	}
+
+	.mobile-menu-list {
+	    list-style-type: none;
+	    margin: 1vw;
+	    padding: 0;
+	    overflow: hidden;
+	}
+
+	.mnav-li a {
+	    text-decoration: none;
+	}
+}
+
+/* 992 @screen-md-min - 1199 @screen-md-max */ 
+@media (min-width: 992px) and (max-width: 1199px) {
+	.pict {
+		max-width: 40vw;
+	}
+
+	.divToLogin p {
+		font-size: 3vh;
+	}
+
+	.all-meeting-link {
+		font-size: 3vh;
+	}
+}
+
+/* 1200 @screen-lg-min up */
+@media (min-width: 1200px) {
+	.logo-rect1, .logo-rect2 {
+    	height: 10vw;
+    	width: 5vw;
+    }
+
+	#m1, #m2 {
+		font-size: 4vw;
+	}
+
+	#u {
+		font-size: 5vw;
+	}
+
+	.logo {
+	   margin-top: -1vh;
+	}
+}
