@@ -6758,3 +6758,773 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+header {
+	width: 100vw;
+	height: 8vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #8BAAB5;
+	border-bottom: 0.1vw solid gray;
+}
+
+aside {
+	width: 45vw;
+	height: 92vh;
+	position: absolute;
+	top: 8vh;
+	left: 0;
+	background-color: white;
+	overflow: hidden;
+}
+
+article {
+	width: 55vw;
+	height: 88vh;
+	position: absolute;
+	top: 8vh;
+	left: 45vw;	
+	background-color: white;
+	border-left: 0.1vw solid #8BAAB5;		
+}
+
+footer {
+	width: 55vw;
+	height: 4vh;
+	position: absolute;
+	top: 96vh;
+	left: 45vw;	
+	background-color: white;
+	border-top: 0.1vw solid gray;
+	color: #8BAAB5;
+}
+
+p {
+	font-size: 2.5vh;
+}
+
+.logo-rect1 {
+    -ms-transform: rotate(330deg); /* IE 9 */
+    -webkit-transform: rotate(330deg); /* Safari */
+    transform: rotate(330deg);
+    z-index: 100;
+    background-color: orange;
+    position: absolute;
+    top: -5vh;
+    left: -1vw;
+    width: 5vw;
+    height: 12vw;
+    border: 1px solid #8BAAB5;
+}
+
+.logo-rect2 {
+    -ms-transform: rotate(330deg); /* IE 9 */
+    -webkit-transform: rotate(330deg); /* Safari */
+    transform: rotate(330deg);
+    z-index: 110;
+    background-color: white;
+    position: absolute;
+    top: -5vh;
+    left: 1vw;
+    width: 5vw;
+    height: 12vw;
+    border: 1px solid #8BAAB5;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+  	overflow: hidden;
+  }
+
+h1, .all-meeting-title, .appoint-btn, .cright, .toptext {
+	font-family: 'Raleway', sans-serif;
+}
+
+#m1, #m2, #u {
+	font-family: 'Poiret One', cursive;
+}
+
+label {
+	margin: 5px;
+	width: 100%;
+}
+
+.logo {
+    width: 5vw;
+    word-wrap: break-word;
+}
+
+#m1 {
+  	margin: 2vw 0 0 0.6vw;
+  	font-size: 4vw;
+}
+
+#m2 {
+  	margin: -4vw 0 0 0.6vw;
+  	font-size: 4vw;
+}
+
+#u {
+  	margin: -4.8vw 0 0 0.65vw;
+  	font-size: 5vw;
+}
+
+.row {
+  	margin: 0;
+}
+
+.navbar {
+	margin: 0;
+	border: 0;
+	float: right;
+	padding-left: 0;
+}
+
+.nav-ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+.nav-li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 3vh 2vw 3vh 2vw;
+    text-decoration: none;
+    text-shadow: 1px 1px gray;
+}
+
+li a:hover {
+    background-color: white;
+    text-decoration: none;
+    text-shadow: none;
+    color: #8BAAB5;
+}
+
+li a:active {
+	color:orange;
+}
+
+a, a:active, a:focus, a:hover, a:visited {
+    text-decoration: none;  
+}
+
+.inform {
+	border-left: 1px solid #8BAAB5;
+	border-right: 1px solid #8BAAB5;
+	border-top: 1px solid #8BAAB5;
+	margin: 1vh 1vw 0 1vw;
+	padding-top: 4vh;
+}
+
+.inform2 {
+	border: 1px solid #8BAAB5;
+	margin: 1vh 1vw 1vh 1vw;
+	padding-top: 1.5vh;
+}
+
+.inform2 div p {
+	padding-top: 2.5vh;
+}
+
+.img-inform {
+	border-left: 1px solid #8BAAB5;
+	border-right: 1px solid #8BAAB5;
+	border-bottom: 1px solid #8BAAB5;
+	margin: 0 1vw 1vh 1vw;
+	padding: 2vh 0 2vh 0;
+}
+
+.appoint-btn {
+	border: 3px solid #8BAAB5;
+	color: white;
+	background-color: orange;
+	font-size: 3.5vh;
+}
+
+.appoint-btn:hover {
+	color: #8BAAB5;
+}
+
+.meeting-title-div {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	width: 36vw;
+	right: 0;
+	padding: 0;
+	z-index: 5;
+}
+
+.divToLogin {
+	position: absolute;
+	margin: auto;
+	top: -60vh;
+	width: 35vw;
+	right: 10vw;
+	height: 40vh;
+	padding: 8vh;
+	z-index: 7;
+	opacity: 0.9;
+	background-color: white;
+	border: 1px solid #8BAAB5;
+}
+
+.divToLogin p {
+	font-size: 3.5vh;
+}
+
+.all-meeting-link {
+	margin: 1.5vh 2vw 0.5vh 1vw;
+}
+
+.toptext {
+	margin: -1vh 0;
+}
+
+.name, .name a {
+	margin: 0;
+	padding-top: 0;
+	font-size: 7vh;
+	z-index: 20;
+	color: white;
+}
+
+.cright {
+	margin: 0 1vw 0 0;
+	color: #8BAAB5;;
+	font-size: 2.5vh;
+	float: right;
+}
+
+.pict {
+	max-height: 60vh;
+	border: 1px solid #8BAAB5;
+	padding: 1px;
+}
+
+.location-select {
+	display: none;
+	padding: 2vh 0 2vh 0;
+	background-color: white;
+	border-radius: 0.5vw;
+	border: 1px solid #8BAAB5;
+}
+
+.auth-only {
+	display: none;
+}
+
+.login_register1, .login_register2 {
+	width: 25vw;
+}
+
+.login_register2 {
+	display: none;
+}
+
+.login_register1 input[type=text], .login_register1 input[type=email], .login_register1 input[type=password], .login_register2 input[type=text], .login_register2 input[type=email], .login_register2 input[type=password] {
+	padding: 5px; 
+	margin: -5px 0 10px 0; 
+	float: right;
+}
+
+.login_popup {
+	padding: 1vh 1vw 2vh 1vw; 
+	background: white; 
+	border: 1px solid #8BAAB5;
+	border-radius: 0.5vw;
+	z-index: 99; 
+	display: none; 
+	position: absolute; 
+	right: 0;
+	top: 8vh;
+}
+
+.close_button { 
+	float: left; 
+}
+
+.login_button, .register_button { 
+	float: right; 
+}
+
+.popup_title { 
+	margin: 20px;
+}
+
+.login_label, .register_label {
+	margin: 10px;
+}
+
+.login_link, .register_link {
+	text-align: center;
+}
+
+.logout_call {
+	display: none;
+}
+
+.radio-label {
+	display: inline-block;
+	width: 45%;
+}
+
+.row-form {
+	margin: 2vh 0 1vh 0;
+}
+
+.labelTime {
+	margin: 5px 0 5px 0;
+}
+
+ .aside-page {
+ 	height: 92vh;
+}
+
+.left-padding-zero {
+	padding-left: 0;
+}
+
+.right-padding-zero {
+	padding-right: 0;
+}
+
+.list-of-meetings {
+	height: 70vh;
+	overflow: auto;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	padding-right: 1vw;
+}
+
+.list-of-public-meetings h3, .list-of-private-meetings h3 {
+	background-color: #EEEEEE;
+	padding: 1vw;
+}
+
+.list-of-public-meetings h4, .list-of-private-meetings h4 {
+	background-color: #FAFAFA;
+	padding: 1vw;
+	margin-top: 0;
+}
+
+.scrollablediv {
+	overflow-y: auto;
+}
+
+.meetingTypeOk, .meetingHostedOk, .meetingInvitedOk, .meetingTopicOk, .meetingPlaceOk, .meetingDateStartOk, .meetingDateFinishOk {
+	display: none;
+	color: green;
+}
+
+.meetingTypeFeedback, .meetingHostedFeedback, .meetingInvitedFeedback, .meetingTopicFeedback, .meetingPlaceFeedback, .meetingDateStartFeedback, .meetingDateFinishFeedback, .txtEmailFeedback, .txtPassFeedback, .txtRegNameFeedback, .txtRegEmailFeedback, .txtRegPassFeedback, .txtRegRePassFeedback {
+	color: red;
+	font-size: 2vh;
+}
+
+#invited-friends {
+	display: none;
+}
+
+.meeting-box {
+	border: 0.1vw solid #CBEAF5;
+}
+
+.meeting-box p {
+	padding-left: 1vw;
+}
+
+.mob-menu {
+	display: none;
+}
+
+.mobile-menu-div {
+	display: none
+}
+/* up 767 @screen-xs-max*/
+@media screen and (max-width: 767px) and (orientation: portrait) {
+	header {
+		width: 100vw;
+		height: 8vh;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: #8BAAB5;
+		border-bottom: 0.1vw solid gray;
+	}
+
+	aside {
+		width: 100vw;
+		height: 50vh;
+		position: absolute;
+		top: 8vh;
+		left: 0;
+		background-color: white;
+		overflow: hidden;
+	}
+
+	article {
+		width: 100vw;
+		height: 38vh;
+		position: absolute;
+		top: 58vh;
+		left: 0;	
+		background-color: white;
+		border-left: 0.1vw solid #8BAAB5;
+		z-index:2;		
+	}
+
+	footer {
+		width: 100vw;
+		height: 4vh;
+		position: absolute;
+		top: 96vh;
+		left: 0;	
+		background-color: white;
+		border-top: 0.1vw solid gray;
+		color: #8BAAB5;
+	}
+
+	label {
+		font-size: 2.5vh;
+	}
+
+	.logo-rect1, .logo-rect2 {
+    	height: 18vh;
+    	width: 5vh;
+    }
+
+	#m1, #m2 {
+		font-size: 4vh;
+	}
+
+	#u {
+		font-size: 5vh;
+	}
+
+	.logo {
+	   padding-top: 3vh;
+	}
+
+	.aside-page {
+		height: 48vh;
+	}
+
+	.list-of-meetings {
+		height: 40vh;
+	}
+
+	.inform {
+		padding: 0;
+	}
+
+	.pict {
+	max-height: 36vh;
+  max-width: 90vw;
+	}
+
+	.divToLogin {
+		position: absolute;
+		top: -30vh;
+		width: 84vw;
+		right: 8vw;
+		height: 25vh;
+		padding: 4vh;
+	}
+
+	.divToLogin p {
+		font-size: 2vh;
+	}
+
+	.all-meeting-link {
+		right: 5vw;
+		font-size: 2vh;
+	}
+
+	#welcome-message, h4 {
+		margin: 2vh 0 0 0;
+	}
+
+	.login_register1, .login_register2 {
+		width: 97vw;
+		right: 0;
+	}
+
+	.login_popup {
+		right: 0;
+	}
+
+	.name, .name a{
+		font-size: 6vh;
+		text-align: center;
+		padding-top: 0.5vh;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	.mob-menu {
+		display: block;
+		position: absolute;
+		top: 1vh;
+		right: 2vw;
+		background-color: #8BAAB5;
+	}
+
+	.mycopyright {
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 4.5vh;
+	}
+
+	h3 {
+		font-size: 4vh;
+	}
+
+	.mobile-menu-div {
+		display: none;
+		position: absolute;
+		width: 60vw;
+		top: 8vh;
+		right: 0;
+		z-index: 8;
+		color: black;
+		background-color: white;
+		border: 1px solid #8BAAB5;
+	}
+
+	.mobile-menu-list {
+	    list-style-type: none;
+	    margin: 1vw;
+	    padding: 0;
+	    overflow: hidden;
+	}
+
+	.mnav-li a {
+	    text-decoration: none;
+	}
+
+	.login_register1, .login_register1 {
+		padding: 0 2vw 0 2vw;
+	}
+
+  .reg-div {
+    height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .login_popup {
+    width: 100vw;
+  }
+}
+/* 768 @screen-sm-min - 991 @screen-sm-max */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.logo-rect1, .logo-rect2 {
+    	height: 15vh;
+    	width: 5vw;
+    	padding-top: 2vh;
+    }
+
+	.pict {
+		max-width: 40vw;
+	}
+
+	.divToLogin {
+		font-size: 1.9vh;
+    padding: 4vw;
+  }
+
+  .divToLogin p {
+    font-size: 2.5vh;
+  }
+
+  .all-meeting-link {
+    font-size: 1.5vh;
+  }
+
+
+	.login_register1, .login_register2 {
+		width: 30vw;
+		right: 0;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	.mob-menu {
+		display: block;
+		position: absolute;
+		top: 0.5vh;
+		right: 1vw;
+		background-color: #8BAAB5;
+	}
+
+	.mobile-menu-div {
+		display: none;
+		position: absolute;
+		width: 20vw;
+		top: 8vh;
+		right: 0;
+		z-index: 8;
+		color: black;
+		background-color: white;
+		border: 1px solid #8BAAB5;
+	}
+
+	.mobile-menu-list {
+	    list-style-type: none;
+	    margin: 1vw;
+	    padding: 0;
+	    overflow: hidden;
+	}
+
+	.mnav-li a {
+	    text-decoration: none;
+	}
+}
+
+/* 992 @screen-md-min - 1199 @screen-md-max */ 
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.pict {
+		max-width: 40vw;
+	}
+
+  .divToLogin {
+    font-size: 2.5vh;
+    padding: 4vw;
+  }
+
+	.divToLogin p {
+		font-size: 2.8vh;
+	}
+
+	.all-meeting-link {
+		font-size: 3vh;
+	}
+}
+
+/* 1200 @screen-lg-min up */
+@media screen and (min-width: 1200px) {
+	.logo-rect1, .logo-rect2 {
+    	height: 12vw;
+    	width: 5vw;
+      padding-top: 2vh;
+    }
+
+	#m1, #m2 {
+		font-size: 4vw;
+	}
+
+	#u {
+		font-size: 5vw;
+	}
+
+	.logo {
+	   margin-top: -1vh;
+	}
+
+  .pict {
+    max-width: 40vw;
+  }
+
+  .divToLogin {
+    font-size: 2vh;
+    padding: 4vw;
+  }
+
+  .divToLogin p {
+    font-size: 3vh;
+  }
+}
+
+/* 800 @screen-sm-max and landscape */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+  .logo-rect1, .logo-rect2 {
+      height: 15vh;
+      width: 5vw;
+      padding-top: 2vh;
+    }
+
+  .pict {
+    max-width: 38vw;
+    max-height: 60vh;
+  }
+
+  .divToLogin {
+    font-size: 1.9vh;
+    padding: 4vw;
+  }
+
+  .divToLogin p {
+    font-size: 2.5vh;
+  }
+
+  .all-meeting-link {
+    font-size: 3vh;
+    margin-top:4vh;
+  }
+
+
+  .login_register1, .login_register2 {
+    width: 50vw;
+    right: 0;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .mob-menu {
+    display: block;
+    position: absolute;
+    top: 0.5vh;
+    right: 1vw;
+    background-color: #8BAAB5;
+  }
+
+  .mobile-menu-div {
+    display: none;
+    position: absolute;
+    width: 40vw;
+    top: 8vh;
+    right: 0;
+    z-index: 8;
+    color: black;
+    background-color: white;
+    border: 1px solid #8BAAB5;
+  }
+
+  .mobile-menu-list {
+      list-style-type: none;
+      margin: 1vw;
+      padding: 0;
+      overflow: hidden;
+  }
+
+  .mnav-li a {
+      text-decoration: none;
+  }
+
+  .mob-menu {
+    width:7vh;
+    height: 7vh;
+    padding:0;
+  }
+
+  .reg-div {
+    height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

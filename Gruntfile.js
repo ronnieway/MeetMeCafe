@@ -6,34 +6,33 @@ module.exports = function(grunt) {
       concat: {
         dist: {
           src: [
-              'js/*.js',
-              'js/project_js/*.js',
-              '! js/npm.js'
+              'src/js/*.js',
+              'src/js/project_js/*.js',
+              '! src/js/npm.js'
           ],
-          dest: 'js/total.js'
+          dest: 'dist/js/total.js'
         },  
         dist: {
           src: [
-              'css/*.css',
-              '!css/*.min.css',
-              'css/project_css/*.css' 
+              'src/css/bootstrap.css',
+              'src/css/project_css/*.css' 
           ],
-          dest: 'css/total.css'
+          dest: 'dist/css/total.css'
         }
       },
       uglify: {
         build: {
-          src: 'js/total.js',
-          dest: 'js/total.min.js'
+          src: 'dist/js/total.js',
+          dest: 'dist/js/total.min.js'
         }
       },
       imagemin: {
         dynamic: {
           files: [{
             expand: true,
-            cwd: 'img/initial/',
+            cwd: 'src/img/initial/',
             src: ['**/*.{png,jpg,gif}'],
-            dest: 'img/'
+            dest: 'dist/img/'
           }]
         }
       },
@@ -41,9 +40,9 @@ module.exports = function(grunt) {
         target: {
           files: [{
             expand: true,
-            cwd: 'css',
+            cwd: 'src/css',
             src: ['total.css'],
-            dest: 'css',
+            dest: 'dist/css',
             ext: '.min.css'
           }]
         }

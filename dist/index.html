@@ -69,15 +69,15 @@
       </div>
       <div class="login_popup">
         <div>
-          <form class="login_register1" id="frmLogin" role="form">
+          <form class="login_register1" id="frmLogin" role="form" novalidate>
             <h4 class="text-center">Sign In</h4>
             <div class="form-group">
               <label for="txtEmail">Email: </label>
-              <input type="email" class="form-control" id="txtEmail" placeholder="your@email.com" name="email" required onblur="txtEmailCheck();" onfocus="$('.txtEmailFeedback').empty();">
+              <input type="email" class="form-control" id="txtEmail" placeholder="your@email.com" name="email" required onchange="txtEmailCheck();" onfocus="$('.txtEmailFeedback').empty();">
               <div class="txtEmailFeedback">
               </div>        
               <label for="txtPass">Password: </label>
-              <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" required onblur="txtPassCheck();" onfocus="$('.txtPassFeedback').empty();">
+              <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" required onchange="txtPassCheck();" onfocus="$('.txtPassFeedback').empty();">
               <div class="txtPassFeedback">
               </div>
             </div>
@@ -92,27 +92,29 @@
               </div>
             </div>
             <br>
-            <div>Don't have account? <a class="register_link" href="#/register">Sign Up</a></div>
+            <div>
+              <p class="login-text">Don't have account? <a class="register_link" href="#/register">Sign Up</a></p>
+            </div>
           </form>
         </div>
-        <div class="scrollablediv">
-          <form class="login_register2" id="frmRegister" role="form">
+        <div>
+          <form class="login_register2" id="frmRegister" role="form" novalidate>
             <h4 class="text-center">Sign Up</h4>
-            <div class="form-group">
+            <div class="form-group reg-div">
               <label for="txtRegName">Name: </label>
-              <input type="text" class="form-control" id="txtRegName" placeholder="Your Name" name="name" required onblur="txtRegNameCheck();" onfocus="$('.txtRegNameFeedback').empty();">
+              <input type="text" class="form-control" id="txtRegName" placeholder="Your Name" name="name" required onchange="txtRegNameCheck();" onfocus="$('.txtRegNameFeedback').empty();">
               <div class="txtRegNameFeedback">
               </div>             
               <label for="txtRegEmail">Email: </label>
-              <input type="email" class="form-control" id="txtRegEmail" placeholder="your@email.com" name="email" required onblur="txtRegEmailCheck();" onfocus="$('.txtRegEmailFeedback').empty();">
+              <input type="email" class="form-control" id="txtRegEmail" placeholder="your@email.com" name="email" required onchange="txtRegEmailCheck();" onfocus="$('.txtRegEmailFeedback').empty();">
               <div class="txtRegEmailFeedback">
               </div>
               <label for="txtRegPass">Password: </label>
-              <input type="password" class="form-control" id="txtRegPass" placeholder="Password" name="password" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onblur="txtRegPassCheck();" onfocus="$('.txtRegPassFeedback').empty();">
+              <input type="password" class="form-control" id="txtRegPass" placeholder="Password" name="password" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onchange="txtRegPassCheck();" onfocus="$('.txtRegPassFeedback').empty();">
               <div class="txtRegPassFeedback">
               </div>
               <label for="txtRegRePass">Re-enter password: </label>
-              <input type="password" class="form-control" id="txtRegRePass" placeholder="Password" name="repassword" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onblur="txtRegRePassCheck();" onfocus="$('.txtRegRePassFeedback').empty();">
+              <input type="password" class="form-control" id="txtRegRePass" placeholder="Password" name="repassword" pattern="[A-z0-9\!\@\#\$\%\^\&\*]{6,256}" required onchange="txtRegRePassCheck();" onfocus="$('.txtRegRePassFeedback').empty();">
               <div class="txtRegRePassFeedback">
               </div>
               <label for="txtRegLocation">Your city: </label>
@@ -130,7 +132,7 @@
             </div>
             <br>
             <div>
-              Already have account? <a class="login_link" href="#/">Sign In</a>
+              <p class="login-text">Already have account? <a class="login_link" href="#/">Sign In</a></p>
             </div>
           </form>
         </div>  
@@ -193,29 +195,30 @@
         </div>
       </div>
       <div class="aside-createnew aside-page scrollablediv">
-        <form class="appoint-meeting" role="form">
+        <form class="appoint-meeting" role="form" novalidate>
           <h2 class="text-center">Add new meeting</h2>
           <div class="row inform2">
             <div class="col-lg-12 col-md-12">
               <div class="form-group">
                 <div class="row row-form">
                   <div class="col-lg-3 col-md-3">     
-                    <label for="meetingType">
+                    <label for="meetingTypes">
                       It will be a: *
                     </label>
                   </div>
                   <div class="col-lg-8 col-md-8 right-padding-zero">  
-                    <input list="meetingTypes" class="form-control" id="meetingTypeChosen" placeholder="party?" autocomplete="off" required onblur="meetingTypeCheck();" onfocus="$('.meetingTypeFeedback').empty();"> 
+                    <input list="meetingTypes" class="form-control" id="meetingTypeChosen" placeholder="party?" autocomplete="off" required onchange="meetingTypeCheck();" onfocus="$('.meetingTypeFeedback').empty();"> 
                       <datalist id="meetingTypes">
                         <option value="business matters"></option>
                         <option value="party"></option>
                         <option value="birthday celebration"></option>
                         <option value="talk"></option>
-                        <option value="public Speaking"></option>
+                        <option value="public speaking"></option>
                         <option value="performance"></option>
                         <option value="presentation"></option>
                         <option value="show"></option>
                         <option value="event"></option>
+                        <option value="rendezvous"></option>
                       </datalist>
                       <div class="meetingTypeFeedback">
                       </div>
@@ -225,6 +228,70 @@
                     <span id="inputSuccess2Status" class="sr-only">(success)</span>
                   </div>
                 </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingTopic">
+                      The topic: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="text" class="form-control" id="meetingTopic" placeholder="drinking wine, feeling fine..." required onchange="meetingTopicCheck();" onfocus="$('.meetingTopicFeedback').empty();">
+                    <div class="meetingTopicFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingTopicOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingDateStart">
+                      It starts at: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="datetime-local" class="form-control" id="meetingDateStart" required onchange="meetingDateStartCheck();" onfocus="$('.meetingDateStartFeedback').empty();">
+                    <div class="meetingDateStartFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 meetingDateStartOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingDateFinish">
+                      And finish at: *
+                    </label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="datetime-local" name="time" class="form-control" id="meetingDateFinish" required onchange="meetingDateFinishCheck();" onfocus="$('.meetingDateFinishFeedback').empty();">
+                    <div class="meetingDateFinishFeedback">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 meetingDateFinishOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+                <div class="row row-form">
+                  <div class="col-lg-3 col-md-3">
+                    <label for="meetingPlace">
+                      And location: *
+                    </label> 
+                  </div>
+                  <div class="col-lg-8 col-md-8 right-padding-zero">
+                    <input type="text" class="form-control"  id="meetingPlace" placeholder="McDonalds?" required onchange="meetingPlaceCheck();" onfocus="$('.meetingPlaceFeedback').empty();">
+                    <div class="meetingPlaceFeedback">
+                    </div>                      
+                  </div>
+                  <div class="col-lg-1 col-md-1 meetingPlaceOk">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>                
                 <div class="row row-form" id="hosted-by">
                   <div class="col-lg-3 col-md-3">
                     <label for="meetingHosted">
@@ -232,7 +299,7 @@
                     </label>
                   </div>
                   <div class="col-lg-8 col-md-8 right-padding-zero">
-                    <input type="text" class="form-control" id="meetingHosted" placeholder="your parents? Google?.." required onblur="meetingHostedCheck();" onfocus="$('.meetingHostedFeedback').empty();">
+                    <input type="text" class="form-control" id="meetingHosted" placeholder="your parents? Google?.." required onchange="meetingHostedCheck();" onfocus="$('.meetingHostedFeedback').empty();">
                     <div class="meetingHostedFeedback">
                     </div>
                   </div>
@@ -243,18 +310,18 @@
                 </div>  
                 <div class="row row-form">
                   <div class="col-lg-3 col-md-3">
-                    <label>
-                      Who is invited:
+                    <label for="invitedAuditory">
+                      <span id="invitedAuditory">Who is invited:</span>
                     </label>
                   </div>
                   <div class="col-lg-4 col-md-4">
-                    <label class="radio-label radio-inline" for="publicRadio">
+                    <label class="radio-label radio-inline" for="meetingPublicRadio">
                       <input type="radio" name="auditory" id="meetingPublicRadio" checked>
                       Everybody
                     </label>
                   </div>
                   <div class="col-lg-4 col-md-4">
-                    <label class="radio-label radio-inline" for="privateRadio">
+                    <label class="radio-label radio-inline" for="meetingPrivateRadio">
                       <input type="radio" name="auditory" id="meetingPrivateRadio" >
                       Friends
                     </label>
@@ -269,7 +336,7 @@
                     </label>
                   </div>
                   <div class="col-lg-8 col-md-8 right-padding-zero">
-                    <input type="email" class="form-control" id="meetingInvited" placeholder="friend1@email.com, friend2@email.com" multiple onblur="meetingInvitedCheck();" onfocus="$('.meetingInvitedFeedback').empty();"> 
+                    <input type="email" class="form-control" id="meetingInvited" placeholder="friend1@email.com, friend2@email.com" multiple onchange="meetingInvitedCheck();" onfocus="$('.meetingInvitedFeedback').empty();"> 
                     <div class="meetingInvitedFeedback">
                     </div>                
                   </div>
@@ -278,73 +345,6 @@
                     <span id="inputSuccess2Status" class="sr-only">(success)</span>
                   </div>
                 </div>  
-                <div class="row row-form">
-                  <div class="col-lg-3 col-md-3">
-                    <label for="meetingTopic">
-                      The topic: *
-                    </label>
-                  </div>
-                  <div class="col-lg-8 col-md-8 right-padding-zero">
-                    <input type="text" class="form-control" id="meetingTopic" placeholder="drinking wine, feeling fine..." required onblur="meetingTopicCheck();" onfocus="$('.meetingTopicFeedback').empty();">
-                    <div class="meetingTopicFeedback">
-                    </div>
-                  </div>
-                  <div class="col-lg-1 col-md-1 meetingTopicOk">
-                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                  </div>
-                </div>
-                <div class="row row-form">
-                  <div class="col-lg-3 col-md-3">
-                    <label for="meetingPlace">
-                      And location: *
-                    </label> 
-                  </div>
-                  <div class="col-lg-8 col-md-8 right-padding-zero">
-                    <input type="text" class="form-control"  id="meetingPlace" placeholder="McDonalds?" required onblur="meetingPlaceCheck();" onfocus="$('.meetingPlaceFeedback').empty();">
-                    <div class="meetingPlaceFeedback">
-                    </div>                      
-                  </div>
-                  <div class="col-lg-1 col-md-1 meetingPlaceOk">
-                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                  </div>
-                </div>
-                <div class="row row-form">
-                  <div class="col-lg-3 col-md-3">
-                    <label for="meetingDate">
-                      The date: *
-                    </label>
-                  </div>
-                  <div class="col-lg-8 col-md-8 right-padding-zero">
-                    <input type="date" class="form-control" id="meetingDate" required onblur="meetingDateCheck();" onfocus="$('.meetingDateFeedback').empty();">
-                    <div class="meetingDateFeedback">
-                    </div>
-                  </div>
-                  <div class="col-lg-1 meetingDateOk">
-                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                  </div>
-                </div>
-                <div class="row row-form">
-                  <div class="col-lg-3 col-md-3">
-                    <label>
-                      And time: *
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-4 right-padding-zero">
-                    <input type="time" name="time" class="form-control" id="meetingStart" required>
-                    <div id="meetingTimeFeedback">
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 right-padding-zero">
-                    <input type="time" name="time" class="form-control" id="meetingFinish" required onblur="meetingTimeCheck();" onfocus="$('.meetingTimeFeedback').empty();">
-                  </div>
-                  <div class="col-lg-1 meetingTimeOk">
-                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                  </div>
-                </div>
                 <div class="row row-form">
                   <div class="col-lg-3 col-md-3">
                     <label for="meetingDescription">
@@ -376,16 +376,16 @@
     <article>
       <div class="meeting-title-div text-right">
         <button type="link" class="btn btn-default all-meeting-link" href="#" onclick="getLocation();">Autolocate</button>
-      </div>
-      <div class="divToLogin text-justify">
-        <p>Please, sign in/sign up to see the nearest public or private meetings (where you are invited), or to create your own meeting there.</p>
-        <button class="appoint-btn btn-block" autofocus><b>Let's go!</b></button>
-      </div>
+      </div>     
       <div id="map" style="width:100%;height:100%;">
       </div>
     </article>
 
     <footer>
+      <div class="divToLogin text-justify">
+        <p>Please, sign in/sign up to see the nearest public or private meetings (where you are invited), or to create your own meeting there.</p>
+        <button id="letsGo" class="appoint-btn btn-block" autofocus><b>Let's go!</b></button>
+      </div>
       <div class="row">
         <div class="col-lg-9 col-md-9">
         </div>
@@ -404,12 +404,6 @@
 
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
     <script type="text/javascript" src="js/total.min.js"></script>
-    <!--<script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.serialize-object.compiled.js"></script>
-    <script type="text/javascript" src="js/path.min.js"></script>
-
-    <script type="text/javascript" src="js/project_js/loginpanel.js"></script>
-    <script type="text/javascript" src="js/project_js/firebase.js"></script>-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAEwrqTBUvPZpCqyjLjjst85AGzpQbS5Q&libraries=places&callback=initMap"
         async defer></script>

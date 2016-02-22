@@ -2395,14 +2395,15 @@ var meetingTopic;
 var meetingHosted;
 var meetingPlace;
 var meetingDate;
-var meetingStart;
-var meetingFinish;
+var meetingStartDate;
+var meetingFinishDate;
 var meetingDescription;
 var meetingInvited;
 var place;
 var todayDate;
 var MeetingDateIndex;
 var theUserName;
+var thisUserCoordObject;
 
 var usersInvitedArray;
 var invitedUser1;
@@ -2431,7 +2432,14 @@ var marker;
 var geocoder;
 var map;
 
+var errorCount;
+
 function newUserRegistering() {
+    txtRegNameCheck();
+    txtRegEmailCheck();
+    txtRegPassCheck();
+    txtRegRePassCheck();
+
     preID = document.getElementById('txtRegEmail').value;
     newUserID = (preID.replace(/[^a-zA-Z0-9 ]/g, ""));
     newUserName = document.getElementById('txtRegName').value;
@@ -2439,28 +2447,43 @@ function newUserRegistering() {
     newUserLocation = document.getElementById('txtRegLocation').value;
     var geocoder = new google.maps.Geocoder();
     var address = document.getElementById('txtRegLocation').value;
-    geocoder.geocode({'address': address}, function(results, status) {
+    if (!address) {
+      newUserLat = 50.45;
+      newUserLng = 30.51;
+    }
+    else {
+      geocoder.geocode({'address': address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             newUserLat = results[0].geometry.location.lat();
             newUserLng = results[0].geometry.location.lng();
         }
-    });
+      });
+    }  
 }
 
 function newMeetingAdd() {
+  errorCount = 0;
+  meetingTypeCheck();
+  meetingTopicCheck();
+  meetingDateStartCheck();
+  meetingDateFinishCheck();
+  meetingPlaceCheck();
+  meetingHostedCheck();
+  meetingInvitedCheck();
+
+  if (errorCount==0) {
     var ttref = new Firebase("https://meetmeup-001.firebaseio.com/");
     loginFieldinput = ttref.getAuth().password.email;
     loginFieldValue = (loginFieldinput.replace(/[^a-zA-Z0-9 ]/g, ""));
     meetingTypes = document.getElementById('meetingTypeChosen').value;
     meetingTopic = document.getElementById('meetingTopic').value;
     meetingHosted = document.getElementById('meetingHosted').value;
-    meetingDate = document.getElementById('meetingDate').value;
-    meetingStart = document.getElementById('meetingStart').value;
-    meetingFinish = document.getElementById('meetingFinish').value;
+    meetingStartDate = document.getElementById('meetingDateStart').value;
+    meetingFinishDate = document.getElementById('meetingDateFinish').value;
     meetingDescription = document.getElementById('meetingDescription').value;
     meetingInvited = document.getElementById('meetingInvited').value;
-    meetingDateConverted = (meetingDate.replace(/[^a-zA-Z0-9 ]/g, ""));
-    
+    meetingDate = meetingStartDate.split("T"); 
+    meetingDateConverted = (meetingDate[0].replace(/[^a-zA-Z0-9 ]/g, ""));   
     if(document.getElementById('meetingPublicRadio').checked) {
         var myMeetingCountRef = new Firebase('https://meetmeup-001.firebaseio.com/meetings/' + meetingDateConverted);        
         finalCountDownPu = 1;   
@@ -2476,9 +2499,8 @@ function newMeetingAdd() {
             type: meetingTypes,
             hostedBy: meetingHosted,
             topic: meetingTopic,
-            date: meetingDate,
-            start: meetingStart,
-            finish: meetingFinish,
+            start: meetingStartDate,
+            finish: meetingFinishDate,
             description: meetingDescription,
             invited: meetingInvited,
             placeID: place.place_id,
@@ -2502,9 +2524,8 @@ function newMeetingAdd() {
             type: meetingTypes,
             hostedBy: meetingHosted,
             topic: meetingTopic,
-            date: meetingDate,
-            start: meetingStart,
-            finish: meetingFinish,
+            start: meetingStartDate,
+            finish: meetingFinishDate,
             description: meetingDescription,
             invited: meetingInvited,
             placeID: place.place_id,
@@ -2531,9 +2552,8 @@ function newMeetingAdd() {
                 type: meetingTypes,
                 hostedBy: meetingHosted,
                 topic: meetingTopic,
-                date: meetingDate,
-                start: meetingStart,
-                finish: meetingFinish,
+                start: meetingStartDate,
+                finish: meetingFinishDate,
                 description: meetingDescription,
                 invited: meetingInvited,
                 placeID: place.place_id,
@@ -2560,9 +2580,8 @@ function newMeetingAdd() {
                 type: meetingTypes,
                 hostedBy: meetingHosted,
                 topic: meetingTopic,
-                date: meetingDate,
-                start: meetingStart,
-                finish: meetingFinish,
+                start: meetingStartDate,
+                finish: meetingFinishDate,
                 description: meetingDescription,
                 invited: meetingInvited,
                 placeID: place.place_id,
@@ -2589,9 +2608,8 @@ function newMeetingAdd() {
                 type: meetingTypes,
                 hostedBy: meetingHosted,
                 topic: meetingTopic,
-                date: meetingDate,
-                start: meetingStart,
-                finish: meetingFinish,
+                start: meetingStartDate,
+                finish: meetingFinishDate,
                 description: meetingDescription,
                 invited: meetingInvited,
                 placeID: place.place_id,
@@ -2618,9 +2636,8 @@ function newMeetingAdd() {
                 type: meetingTypes,
                 hostedBy: meetingHosted,
                 topic: meetingTopic,
-                date: meetingDate,
-                start: meetingStart,
-                finish: meetingFinish,
+                start: meetingStartDate,
+                finish: meetingFinishDate,
                 description: meetingDescription,
                 invited: meetingInvited,
                 placeID: place.place_id,
@@ -2647,9 +2664,8 @@ function newMeetingAdd() {
                 type: meetingTypes,
                 hostedBy: meetingHosted,
                 topic: meetingTopic,
-                date: meetingDate,
-                start: meetingStart,
-                finish: meetingFinish,
+                start: meetingStartDate,
+                finish: meetingFinishDate,
                 description: meetingDescription,
                 invited: meetingInvited,
                 placeID: place.place_id,
@@ -2662,7 +2678,9 @@ function newMeetingAdd() {
     } else {
         alert("Nothing here");
     }
-    map.setCenter(thisUserCoordObject);
+    map.panTo(thisUserCoordObject);
+    map.setZoom(13);
+  }
 }
 
 //<![CDATA[
@@ -2756,7 +2774,7 @@ window.onload=function(){
             // route
             routeTo(route);
         }, function (err) {
-            alert(err);
+            //alert(err);
             // pop up error
             showAlert({
                 title: err.code,
@@ -2782,6 +2800,8 @@ window.onload=function(){
     controllers.login = function (form) {
         // Form submission for logging in
         form.on('submit', function (e) {
+            txtEmailCheck();
+            txtPassCheck();
             var userAndPass = $(this).serializeObject();
             var loginPromise = authWithPassword(userAndPass);
             e.preventDefault();
@@ -2926,6 +2946,7 @@ window.onload=function(){
                 $(".aside-createnew").hide();        
                 $(".aside-meetings").show();
                 $(".mobile-menu-div").hide();
+                $("#letsGo").blur();
 
                 var ttref = new Firebase("https://meetmeup-001.firebaseio.com/");
                 var smthnew = ttref.getAuth().password.email;
@@ -2933,16 +2954,20 @@ window.onload=function(){
                 var ttref2 = new Firebase("https://meetmeup-001.firebaseio.com/users/" + smthnew2);
                 var thisUserLat;
                 var thisUserLng;
-                var thisUserCoordObject;
                 var andThisRef = ttref2.on("value", function (snapshot) {
                     theUserName = snapshot.val().name;
                     $('#welcome-message').append(', ' + theUserName);
                     thisUserLat = snapshot.val().mylat;                   
                     thisUserLng = snapshot.val().mylng;
-                    if (thisUserLat && thisUserLng) {
+                    if (typeof thisUserLat == 'undefined' || typeof thisUserLat == null || thisUserLat == "") {
+                      thisUserLat = 50.45;
+                    }
+                    if (typeof thisUserLng == 'undefined' || typeof thisUserLng == null || thisUserLng == "") {
+                      thisUserLng = 30.51;
+                    }
                         thisUserCoordObject = {lat:thisUserLat, lng:thisUserLng};
                         map.setCenter(thisUserCoordObject);
-                    }
+                    
                 });
 
                 var b = myTodayDate();
@@ -2951,7 +2976,7 @@ window.onload=function(){
                 pubmeetingsRef.once('value', function (snap) {
                     snap.forEach(function(childSnapshot) {
                         var myContent=childSnapshot.val();
-                        $('.list-of-public-meetings').append('<div class="meeting-box"><h4><b>' + myContent.topic +': ' + myContent.type + '</b></h4><p>Created by ' + myContent.author + ', hosted by ' + myContent.hostedBy + '</p><p>On ' + myContent.date + ', from ' + myContent.start + ' to ' + myContent.finish + '</p><p>At ' + myContent.placeName + ', ' + myContent.address + '</p><p>Additional info: ' + myContent.description + '</p></div><br>');
+                        $('.list-of-public-meetings').append('<div class="meeting-box"><h4><b>' + myContent.topic +': ' + myContent.type + '</b></h4><p>Created by ' + myContent.author + ', hosted by ' + myContent.hostedBy + '</p><p>From ' + myContent.start + ' to ' + myContent.finish + '</p><p>At ' + myContent.placeName + ', ' + myContent.address + '</p><p>Additional info: ' + myContent.description + '</p></div><br>');
                         publicMeetingsObject={lat:myContent.lat, lng:myContent.lon};
 
                         var myinfowindow = new google.maps.InfoWindow();
@@ -2961,7 +2986,7 @@ window.onload=function(){
                         });
                         myymarker.setMap(map);
                         myymarker.addListener('click', function() {
-                            myinfowindow.setContent('<div><strong>' + myContent.topic + ' ' + myContent.type + '</strong></br>At ' + myContent.placeName + ' (' + myContent.address + ')<br>On ' + myContent.date + ', ' + myContent.start + '</div>');
+                            myinfowindow.setContent('<div><strong>' + myContent.topic + ' ' + myContent.type + '</strong></br>At ' + myContent.placeName + ' (' + myContent.address + ')<br>On ' + myContent.start + '</div>');
                             myinfowindow.open(map, myymarker); 
                         });
                     });
@@ -2973,7 +2998,7 @@ window.onload=function(){
                 privmeetingsRef.once('value', function (snap) {
                     snap.forEach(function(childSnapshot) {
                         var myContent2=childSnapshot.val();
-                        $('.list-of-private-meetings').append('<div class="meeting-box"><h4><b>' + myContent2.topic +': ' + myContent2.type + '</b></h4><p>Created by ' + myContent2.author + ', hosted by ' + myContent2.hostedBy + '</p><p>On ' + myContent2.date + ', from ' + myContent2.start + ' to ' + myContent2.finish + '</p><p>At ' + myContent2.placeName + ', ' + myContent2.address + '</p><p>Invited persons: ' + myContent2.invited + '</p><p>Additional info: ' + myContent2.description + '</p></div><br>');
+                        $('.list-of-private-meetings').append('<div class="meeting-box"><h4><b>' + myContent2.topic +': ' + myContent2.type + '</b></h4><p>Created by ' + myContent2.author + ', hosted by ' + myContent2.hostedBy + '</p><p>From ' + myContent2.start + ' to ' + myContent2.finish + '</p><p>At ' + myContent2.placeName + ', ' + myContent2.address + '</p><p>Invited persons: ' + myContent2.invited + '</p><p>Additional info: ' + myContent2.description + '</p></div><br>');
                         privateMeetingsObject={lat:myContent2.lat, lng:myContent2.lon};
 
                         var my2infowindow = new google.maps.InfoWindow();
@@ -2983,7 +3008,7 @@ window.onload=function(){
                         });
                         my2ymarker.setMap(map);
                         my2ymarker.addListener('click', function() {
-                            my2infowindow.setContent('<div><strong>' + myContent2.topic + ' ' + myContent2.type + '</strong></br>At ' + myContent2.placeName + ' (' + myContent2.address + ')<br>On ' + myContent2.date + ', ' + myContent2.start + '</div>');
+                            my2infowindow.setContent('<div><strong>' + myContent2.topic + ' ' + myContent2.type + '</strong></br>At ' + myContent2.placeName + ' (' + myContent2.address + ')<br>On ' + myContent2.start + '</div>');
                             my2infowindow.open(map, my2ymarker); 
                         });
                     });
@@ -3118,11 +3143,14 @@ $(document).ready(function() {
 });
 
 function meetingTypeCheck() {
+    errorCount=0;
+    $('.meetingTypeFeedback').empty();
     tt=document.getElementById('meetingTypeChosen');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('meetingTypeChosen').setCustomValidity('type is empty');
         $(".meetingTypeFeedback").append("Choose the meeting type, please");
         $(".meetingTypeOk").hide();
+        errorCount=1;
     }
     else{
         $(".meetingTypeOk").show();
@@ -3130,11 +3158,14 @@ function meetingTypeCheck() {
 }
 
 function meetingHostedCheck() {
+    errorCount=0;
+    $('.meetingHostedFeedback').empty();
     tt=document.getElementById('meetingHosted');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('meetingHosted').setCustomValidity('host is empty');
         $(".meetingHostedFeedback").append("Please, fill the host of meeting");
         $(".meetingHostedOk").hide();
+        errorCount=1;
     }
     else{
         $(".meetingHostedOk").show();
@@ -3142,11 +3173,17 @@ function meetingHostedCheck() {
 }
 
 function meetingInvitedCheck() {
+    errorCount=0;
+    $('.meetingInvitedFeedback').empty();
     tt=document.getElementById('meetingInvited');
-    if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
+    if(document.getElementById('meetingPublicRadio').checked) {
+      return;
+    }
+    else if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('meetingInvited').setCustomValidity('list of invited friends is empty');
         $(".meetingInvitedFeedback").append("Put the invited friend emails, separated by comma, 5 maximum");
         $(".meetingInvitedOk").hide();
+        errorCount=1;
     }
     else{
         $(".meetingInvitedOk").show();
@@ -3154,11 +3191,14 @@ function meetingInvitedCheck() {
 }
 
 function meetingTopicCheck() {
+    errorCount=0;
+    $('.meetingTopicFeedback').empty();
     tt=document.getElementById('meetingTopic');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('meetingTopic').setCustomValidity('topic is empty');
         $(".meetingTopicFeedback").append("What is the topic of meeting?");
         $(".meetingTopicOk").hide();
+        errorCount=1;
     }
     else{
         $(".meetingTopicOk").show();
@@ -3166,19 +3206,24 @@ function meetingTopicCheck() {
 }
 
 function meetingPlaceCheck() {
+    errorCount=0;
+    $('.meetingPlaceFeedback').empty();
     tt=document.getElementById('meetingPlace');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('meetingPlace').setCustomValidity('place for meeting is not chosen');
         $(".meetingPlaceFeedback").append("Choose the location of the meeting, please");
         $(".meetingPlaceOk").hide();
+        errorCount=1;
     }
     else{
         $(".meetingPlaceOk").show();
     }
 }
 
-function meetingDateCheck() {
-    tt=document.getElementById('meetingDate');
+function meetingDateStartCheck() {
+    errorCount=0;
+    $('.meetingDateStartFeedback').empty();
+    tt=document.getElementById('meetingDateStart');
     var mdate = new Date();
     var mday = mdate.getDate();
     if (mday < 10) {
@@ -3189,50 +3234,65 @@ function meetingDateCheck() {
         mmonth = '0' + mmonth;
     }
     var myear = mdate.getFullYear();
-    var mtoday = myear + "-" + mmonth + "-" + mday; 
+    var mtoday = myear + "-" + mmonth + "-" + mday +"T00:00"; 
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
-        document.getElementById('meetingDate').setCustomValidity('date is empty');
-        $(".meetingDateFeedback").append("Choose the correct date of the meeting");
-        $(".meetingDateOk").hide();
+        document.getElementById('meetingDateStart').setCustomValidity('date is empty');
+        $(".meetingDateStartFeedback").append("Choose the correct date of the meeting");
+        $(".meetingDateStartOk").hide();
+        errorCount=1;
     }
     else if (tt.value < mtoday) {
-        document.getElementById('meetingDate').setCustomValidity('date is empty');
-        $(".meetingDateFeedback").append("Date can not be earlier than today");
-        $(".meetingDateOk").hide();
+        document.getElementById('meetingDateStart').setCustomValidity('date is earlier than today');
+        $(".meetingDateStartFeedback").append("Date can not be earlier than today");
+        $(".meetingDateStartOk").hide();
+        errorCount=1;
     }
     else{
-        $(".meetingDateOk").show();
+        $(".meetingDateStartOk").show();
     }
 }
 
-function meetingTimeCheck() {
-    tt=document.getElementById('meetingStart');
-    tu=document.getElementById('meetingFinish');
-    var tdate = new Date();
-    var nowhours = tdate.getHours();
-    var nowminutes = tdate.getMinutes();
-    var ttarray = tt.value.split(":");
-    var tuarray = tu.value.split(":");
-    var tthours =  ttarray[0];
-    var ttminutes = ttarray[1];
-    var tuhours =  tuarray[0];
-    var tuminutes = tuarray[1];
-    if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
-        document.getElementById('meetingStart').setCustomValidity('start time is empty');
-        $(".meetingTimeFeedback").append("Choose the correct time of the meeting");
-        $(".meetingTimeOk").hide();
+function meetingDateFinishCheck() {
+    errorCount=0;
+    $('.meetingDateFinishFeedback').empty();
+    tt=document.getElementById('meetingDateFinish');
+    tu=document.getElementById('meetingDateStart');
+    var mdate = new Date();
+    var mday = mdate.getDate();
+    if (mday < 10) {
+        mday = '0' + mday;
     }
-    else if (typeof tu.value == undefined || typeof tu.value == null || tu.value == "") {
-        document.getElementById('meetingFinish').setCustomValidity('finish time is empty');
-        $(".meetingTimeFeedback").append("Choose the correct time of the meeting");
-        $(".meetingTimeOk").hide();
+    var mmonth = mdate.getMonth() + 1;
+    if (mmonth < 10) {
+        mmonth = '0' + mmonth;
+    }
+    var myear = mdate.getFullYear();
+    var mtoday = myear + "-" + mmonth + "-" + mday +"T00:00"; 
+    if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
+        document.getElementById('meetingDateFinish').setCustomValidity('date is empty');
+        $(".meetingDateFinishFeedback").append("Choose the correct date of the meeting");
+        $(".meetingDateFinishOk").hide();
+        errorCount=1;
+    }
+    else if (tt.value < mtoday) {
+        document.getElementById('meetingDateFinish').setCustomValidity('date is earlier than today');
+        $(".meetingDateFinishFeedback").append("Date can not be earlier than today");
+        $(".meetingDateFinishOk").hide();
+        errorCount=1;
+    }
+    else if (tt.value < tu.value) {
+        document.getElementById('meetingDateFinish').setCustomValidity('finish date is earlier than start date');
+        $(".meetingDateFinishFeedback").append("Start date can not be earlier than finish date");
+        $(".meetingDateFinishOk").hide();
+        errorCount=1;
     }
     else{
-        $(".meetingTimeOk").show();
+        $(".meetingDateFinishOk").show();
     }
 }
 
 function txtEmailCheck() {
+    $('.txtEmailFeedback').empty();
     tt=document.getElementById('txtEmail');
     var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
@@ -3246,6 +3306,7 @@ function txtEmailCheck() {
 }
 
 function txtPassCheck() {
+    $('.txtPassFeedback').empty();
     tt=document.getElementById('txtPass');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('txtPass').setCustomValidity('password field is empty');
@@ -3254,6 +3315,7 @@ function txtPassCheck() {
 }
 
 function txtRegNameCheck() {
+    $('.txtRegNameFeedback').empty();
     tt=document.getElementById('txtRegName');
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
         document.getElementById('txtRegName').setCustomValidity('name is absent');
@@ -3262,6 +3324,7 @@ function txtRegNameCheck() {
 }
 
 function txtRegEmailCheck() {
+    $('.txtRegEmailFeedback').empty();
     tt=document.getElementById('txtRegEmail');
     var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
@@ -3275,6 +3338,7 @@ function txtRegEmailCheck() {
 }
 
 function txtRegPassCheck() {
+    $('.txtRegPassFeedback').empty();
     tt=document.getElementById('txtRegPass');
     var passPattern=/[A-Za-z0-9\!\@\#\$\%\^\&\*\.\-]/;
     if (typeof tt.value == undefined || typeof tt.value == null || tt.value == "") {
@@ -3292,6 +3356,7 @@ function txtRegPassCheck() {
 }
 
 function txtRegRePassCheck() {
+    $('.txtRegRePassFeedback').empty();
     tt=document.getElementById('txtRegRePass');
     tu=document.getElementById('txtRegPass');
     var passPattern=/[A-Za-z0-9\!\@\#\$\%\^\&\*\.\-]/;;
@@ -3313,51 +3378,47 @@ function txtRegRePassCheck() {
     } 
 }
 
-  $(document).ready(function() {
-    var date = new Date();
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-    var today = year + "-" + month + "-" + day;       
-    $("#meetingDate").attr("value", today);
-});
+$(document).ready(function() {
+  var date = new Date();
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+  var h = date.getHours();
+  var m = "00";
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+  var today = year + "-" + month + "-" + day; 
 
-$(document).ready(function() {     
-  var d = new Date(),        
-      h = d.getHours(),
-      m = "00";
-  var start= h + 2;
-  var finish= h + 4
+  var start= h + 1;
+  var finish= h + 2;
   if (start < 10) start = '0' + start;
   if (start == 24) start = '00'; 
   if (start > 24) start = '0' + (start-24); 
   if (finish < 10) finish = '0' + finish;
   if (finish == 24) finish = '00';  
   if (finish > 24) finish = '0' + (finish-24);
-  var starttime= start + ':' + m;
-  var finishtime= finish + ':' + m;
-  $("#meetingStart").attr("value", starttime);
-  $("#meetingFinish").attr("value", finishtime);
+  var starttime = start + ':' + m;
+  var finishtime = finish + ':' + m;
+  var finalStart = today +'T' + starttime;
+  var Finalfinish = today +'T' + finishtime;
+  $("#meetingDateStart").attr("value", finalStart);
+  $("#meetingDateFinish").attr("value", Finalfinish);
 });
-
-
-
-
-
-
 
 
 $(document).ready(function() {
     $(".login_call").click(function(e) {
-        $(".login_popup").show();    
+        $(".login_popup").show();
+        $("#txtRegName").blur(); 
+        $("#meetingTypeChosen").blur();
+        $("#letsGo").blur();
+        $("#txtEmail").focus();   
     });
 });
 
 $(document).ready(function() {
     $(".close_overlay").click(function(e) {
-        $(".login_popup").hide();
+      $(".login_popup").hide();
     });
 });
 
@@ -3370,7 +3431,7 @@ $(document).ready(function() {
         $(".aside-index").show();
         $(".divToLogin").show();
         $(".mobile-menu-div").hide();
-
+        $("#letsGo").focus();
     });
 });
 
@@ -3378,6 +3439,7 @@ $(document).ready(function() {
     $(".register_link").click(function(e) {
         $(".login_register1").hide();
         $(".login_register2").show();
+        $("#txtRegName").focus();
     });
 });
 
@@ -3385,6 +3447,7 @@ $(document).ready(function() {
     $(".login_link").click(function(e) {
         $(".login_register2").hide();
         $(".login_register1").show();
+        $("#txtEmail").focus();
     });
 });
 
@@ -3428,7 +3491,9 @@ $(document).ready(function() {
         $(".aside-howto").hide();
         $(".aside-about").hide();
         $(".aside-createnew").show(); 
-        $(".mobile-menu-div").hide();
+        $(".mobile-menu-div").hide();; 
+        $("#letsGo").blur();
+        $("#meetingTypeChosen").focus();
     });
 });
 
@@ -3440,13 +3505,16 @@ $(document).ready(function() {
         $(".aside-createnew").hide();
         $(".aside-index").show();
         $(".mobile-menu-div").hide();
+        $("#letsGo").blur();
     });
 });
 
 $(document).ready(function() {
     $(".appoint-btn").click(function(e) {
         $(".login_popup").show();
-    });
+        $("#letsGo").blur();
+        $("#txtEmail").focus();
+    });  
 });
 
 $(document).ready(function() {
@@ -3455,13 +3523,12 @@ $(document).ready(function() {
     });
 });
 
-$(document).mouseup(function (e)
-{
+$(document).mouseup(function (e) {
     var container = $(".mobile-menu-div");
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
-        container.hide();
+      container.hide();
     }
 });
